@@ -1,5 +1,6 @@
 package Steps;
 
+import com.uphf.but2.BankManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,10 +12,10 @@ public class bankAccountStep {
 
     private com.uphf.but2.BankManager bankManager;
     private int montant;
-    @Given("je suis sur la page de depot avec un {int} dans mon compte")
-    public void jesuissurlapagedepot(int solde){
+    @Given("Un nouveau compte bancaire 1 est cree avec un solde initial de 1000")
+    public void jesuissurlapagedepot(){
         System.out.println("page depot");
-        bankAccount = new BankAccount(solde);
+        bankManager = new BankManager(1000);
     }
 
     @When("je remplis le champ avec un {int}")
