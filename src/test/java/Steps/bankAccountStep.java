@@ -51,4 +51,10 @@ public class bankAccountStep {
     public void solde500(){
         assertEquals(bankManager.getBalance(3), 499, 0);
     }
+
+    @When("cpt 3 donne {int}")
+    public void donne(int value){
+        bankManager.withdraw(3, value);
+    }
+
 }

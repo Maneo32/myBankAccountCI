@@ -11,3 +11,12 @@ Feature: deposer argent
       When je depose 1000
       And je retire 500
       Then Mon solde est a 500
+
+      Scenario Outline: Virement
+        When cpt 3 donne <argent>
+        And cpt 1 recoit <argent>
+        Then verif les veleurs de cpt1 et 3
+
+        Examples:
+        | argent|
+        |   500 |
