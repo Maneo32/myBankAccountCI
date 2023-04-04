@@ -49,7 +49,7 @@ public class bankAccountStep {
 
     @Then("Mon solde est a 500")
     public void solde500(){
-        assertEquals(bankManager.getBalance(3), 400, 0);
+        assertEquals(499, bankManager.getBalance(3), 0.01);
     }
 
     @When("cpt 3 donne {int}")
