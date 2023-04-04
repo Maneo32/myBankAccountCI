@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class bankAccountStep {
 
-    private BankAccount bankAccount;
+    private com.uphf.but2.BankManager bankManager;
     private int montant;
     @Given("je suis sur la page de depot avec un {int} dans mon compte")
     public void jesuissurlapagedepot(int solde){
