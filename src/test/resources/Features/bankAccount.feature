@@ -9,5 +9,3 @@ Feature: deposer argent
       | solde | montant | attendue |
       | 10    | 100     | 110      |
       | 0    | 2000     | 2000      |
-
-    Scenario Outline:
