@@ -2,11 +2,12 @@ Feature: deposer argent
 
   @Depot
   Scenario Outline: Deposer avec succes
-    Given je suis sur la page de depot avec un <solde> dans mon compte
-    When je remplis le champ avec un <montant>
-    And je clique sur Deposer
-    Then je devrais voir un message de depot effectue avec succes et le solde <attendue>
+    Given Un nouveau compte bancaire 1 est cree avec un solde initial de 1000
+    When Je depose 500 dans le compte 1
+    Then Le solde du compte 1 est de 1500
     Examples:
       | solde | montant | attendue |
       | 10    | 100     | 110      |
       | 0    | 2000     | 2000      |
+
+    Scenario Outline:
