@@ -15,24 +15,21 @@ public class bankAccountStep {
     @Given("Un nouveau compte bancaire 1 est cree avec un solde initial de 1000")
     public void jesuissurlapagedepot(){
         System.out.println("page depot");
-        bankManager = new BankManager(1000);
+        bankManager = new BankManager();
+        bankManager.create(1);
+        bankManager.deposit(1, 1000);
     }
 
-    @When("je remplis le champ avec un {int}")
+    @When("Je depose 500 dans le compte 1")
     public void jeremplislechamp(int mont){
         System.out.println("je remplis");
-        montant = mont;
+        bankManager.deposit(1, 500);
     }
 
-    @And("je clique sur Deposer")
-    public void jecliquesurdeposer(){
-        System.out.println("je clique");
-        bankAccount.deposit(montant);
-    }
 
     @Then("je devrais voir un message de depot effectue avec succes et le solde {int}")
     public void jedevraisvoirunmessage(int solde){
-        System.out.println(bankAccount.checkBalance());
-        assertEquals(solde, bankAccount.checkBalance(), 0);
+        System.out.println("THEN");
+        assertEquals(bankManager.getBalance(1), 1500, 0);
     }
 }
