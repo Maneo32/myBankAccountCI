@@ -9,12 +9,14 @@ import static org.junit.Assert.assertEquals;
 
 public class bankAccountStep {
 
-    private BankManager bankManager = new BankManager();
+    private BankAccountManager bankManager = new BankAccountManager();
+    private double avant1;
+    private double avant2;
 
     @Given("Un nouveau compte bancaire 1 est cree avec un solde initial de 1000")
     public void jesuissurlapagedepot(){
         System.out.println("page depot");
-        bankManager.create(1);
+        bankManager.create();
         bankManager.deposit(1, 1000);
     }
 
@@ -34,27 +36,38 @@ public class bankAccountStep {
 
     @Given("Creation du compte 3")
     public void compte3cree(){
-        bankManager.create(3);
+        bankManager.create();
     }
 
     @When("je depose 1000")
     public void depose1000(){
-        bankManager.deposit(3, 1000);
+        bankManager.deposit(0, 1000);
     }
 
     @And("je retire 500")
     public void retire500(){
-        bankManager.withdraw(3, 500);
+        bankManager.withdraw(0, 500);
     }
 
     @Then("Mon solde est a 500")
     public void solde500(){
-        assertEquals(499, bankManager.getBalance(3), 0.01);
+        assertEquals(501, bankManager.getBalance(0), 0.01);
     }
 
     @When("cpt 3 donne {int}")
     public void donne(int value){
-        bankManager.withdraw(3, value);
+        avant1 = bankManager.getBalance(0);
+        bankManager.withdraw(0, value);
     }
 
+    @And("cpt 1 recoit {int}")
+    public void recoit(int value){
+        avant2 = bankManager.getBalance(1);
+        bankManager.deposit(1, value);
+    }
+
+    @Then("verif les veleurs de cpt1 et 3")
+    public void verif(){
+
+    }
 }
